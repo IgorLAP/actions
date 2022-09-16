@@ -69,7 +69,8 @@
         "devDependencies": [
           "**/*.spec.tsx", 
           "**/*.spec.ts", 
-          "**/setupTests.ts"
+          "**/setupTests.ts",
+          "**/vite.config.ts"
         ]
       }
     ],

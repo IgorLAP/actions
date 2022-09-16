@@ -8,6 +8,7 @@ module.exports = {
   // library 'identity-obj-proxy' handles non transpillable to js files
   moduleNameMapper: {
     "\\.(scss|css|sass|svg|jpg|png|jpeg)$": "identity-obj-proxy",
+    "^~/(.*)$": "<rootDir>/src/$1",
   },
   testEnvironment: "jsdom",
   collectCoverage: true,
