@@ -8,8 +8,6 @@ on:
 
 jobs:
   run-tests:
-    needs: validate-changes
-
     runs-on: ubuntu-latest
 
     steps:
