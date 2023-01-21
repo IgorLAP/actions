@@ -2,22 +2,12 @@
   "name": "actions",
   "private": true,
   "version": "0.0.0",
-  "lint-staged": {
-    "*.ts": [
-      "npx eslint . --fix"
-    ],
-    "*.tsx": [
-      "npx eslint . --fix",
-      "jest --bail --runInBand --findRelatedTests --passWithNoTests"
-    ]
-  },
   "scripts": {
     "dev": "vite",
     "test": "jest --coverage",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "npx eslint . --fix",
-    "prepare": "husky install"
+    "lint": "npx eslint . --fix"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -45,7 +35,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.0.3",
     "jest-environment-jsdom": "^29.0.3",
