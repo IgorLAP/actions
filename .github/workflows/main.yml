@@ -16,7 +16,7 @@ jobs:
         node
         for changed_file in ${{ steps.files.outputs.all }}; do
           echo "Do something with this ${changed_file}."
-          if (${changed_file}.includes('.spec')) console.log('tem testes presentes')
+          if (${changed_file}.includes(".spec")) console.log("tem testes presentes")
         .exit
         done
 
