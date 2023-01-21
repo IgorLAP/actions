@@ -17,7 +17,7 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
     - run: node
-    - run: console.log('naruto')
+    - run: 2 + 2
     - run: .exit
 
   run-tests:
