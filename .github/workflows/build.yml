@@ -16,16 +16,12 @@ jobs:
   
     steps:
       - uses: actions/checkout@v3
-      - name: Usar Node.js versão ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      
-      - name: Instalar dependencias
+
+      - name: Build on Netlify
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
-          npm ci
-          npm run build
+          yarn
+          yarn build
           npx netlify deploy --dir=dist --prod
