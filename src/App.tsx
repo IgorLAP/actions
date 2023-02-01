@@ -1,13 +1,30 @@
+import React from "react";
 import "./styles/App.scss";
 
 function App() {
+  const [show, setShow] = React.useState(false);
+  const content = "something was done";
   return (
-    <>
-      <h1>Hello world</h1>
-      <img alt="" src="https://www.google.com/google.png" />
-      <button type="button">Naruto</button>
-      <p>olha o cuscuz, meu povo</p>
-    </>
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <h1>Github Actions</h1>
+      <button
+        type="button"
+        onClick={() => {
+          setShow((prev) => !prev);
+        }}
+      >
+        Do something
+      </button>
+      <p style={{ display: show ? "block" : "none" }}>{content}</p>
+    </div>
   );
 }
 
