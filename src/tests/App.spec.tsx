@@ -5,6 +5,6 @@ import App from "../App";
 describe("main app", () => {
   it("renders", () => {
     render(<App />);
-    expect(screen.getByText(/hello world/i)).toBeInTheDocument();
+    expect(screen.getByText(/github actions/i)).toBeInTheDocument();
   });
 });
