@@ -15,12 +15,12 @@ jobs:
       - name: Retorna o nome da squad com base na tag
         id: get_squad_name
         run: |
-          echo $(echo $GITHUB_REF | cut -d @ -f 1 | cut -d / -f 3) >> $GITHUB_OUTPUT
+          echo $GITHUB_REF | cut -d @ -f 1 | cut -d / -f 3 >> $GITHUB_OUTPUT
 
       - name: Retorna o nome do app
         id: get_app_name
         run: |
-          echo $(echo $GITHUB_REF | cut -d @ -f 2) >> $GITHUB_OUTPUT
+          echo $GITHUB_REF | cut -d @ -f 2 >> $GITHUB_OUTPUT
 
   # Build usando a CLI do Netlify dependendo do nome da squad.
   build_mas:
