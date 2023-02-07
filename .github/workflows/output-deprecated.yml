@@ -21,54 +21,8 @@ jobs:
         id: get_app_name
         run: |
           echo APP_NAME=$(echo $GITHUB_REF | cut -d @ -f 2) >> $GITHUB_OUTPUT
-
-  # Build usando a CLI do Netlify dependendo do nome da squad.
-  build_mas:
-    name: Build MAS
-    runs-on: ubuntu-20.04
-    needs: [get_squad_name]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Pega tag
-        id: get_version
+      - name: Retrieve everything
         run: |
-          echo ::set-output name=SQUAD::$(echo ${{ needs.get_squad_name.outputs.squad_name }})
-          echo ::set-output name=APP::$(echo ${{ needs.get_squad_name.outputs.app_name }})
-
-        # Instala Netlify CLI e faz o build do projeto
-      - name: Setup Netlify CLI
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          cache: 'yarn'
-
-      - name: Install Netlify CLI
-        run: npm i -g netlify-cli
-
-      - name: Run script to change env file
-        run: node ./scripts/editEnv.js
-        env:
-          SQUAD: ${{needs.get_squad_name.outputs.squad_name}}
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: Build and deploy Backoffice (Preview Mode)
-        if: contains(github.ref, 'backoffice')
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_BACKOFFICE_SITE_ID }}
-        run: |
-          netlify build
-          netlify deploy --alias=${{needs.get_squad_name.outputs.squad_name}}
-
-      - name: Build and deploy Onboarding (Preview Mode)
-        if: contains(github.ref, 'backoffice') != true
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_ONBOARDING_SITE_ID }}
-        run: |
-          netlify build
-          netlify deploy --alias=${{needs.get_squad_name.outputs.squad_name}}
+          echo 'SQUAD é ${{ steps.get_squad_name.outputs.SQUAD }}'
+          echo 'APP_NAME é ${{ steps.get_squad_name.outputs.APP_NAME }}'
+          
