@@ -21,7 +21,7 @@ function App() {
           setShow((prev) => !prev);
         }}
       >
-        Do something. Ok?
+        Do something.
       </button>
       <p style={{ display: show ? "block" : "none" }}>{content}</p>
     </div>
